@@ -62,7 +62,10 @@ export class DatePipe implements PipeTransform {
 ```
 component.ts
 
-import {DatePipe} from 'path-to-source';
+import {DatePipe} from 'path-to-source'
+
+//variable para traer fecha del servidor (firebase)
+  timestamp:any = firebase.database.ServerValue.TIMESTAMP;
   
   ```
   
@@ -70,5 +73,8 @@ import {DatePipe} from 'path-to-source';
 component.html
 
 *ngFor="let item of items | async | datePipe;"
-  
-  ```
+
+<!-- Usamos el pipe "date" de Angular para mostrar en formato dd/MM/yyyy la fecha del servidor, sin el pipe se veria algo así 1505483676759 con el pipe así 15/09/2017-->
+
+`{{item.timestamp | date : 'dd/MM/yyyy'}}`
+
